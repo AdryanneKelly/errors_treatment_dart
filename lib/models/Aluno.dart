@@ -14,19 +14,25 @@ class Aluno {
     return _nome;
   }
 
-  List<double> getNotas(){
+  List<double> getNotas() {
     return _notas;
   }
 
-  void addNotas(double nota){
+  void addNotas(double nota) {
     _notas.add(nota);
   }
 
-  double retornaMedia(){
+  double retornaMedia() {
     var totalNotas = 0.0;
     for (var nota in _notas) {
       totalNotas += nota;
     }
-    return totalNotas / _notas.length;
+    var media = totalNotas / _notas.length;
+
+    return media.isNaN ? 0 : media;
+  }
+
+  bool aprovado(double notaCorte){
+    return retornaMedia() >= notaCorte;
   }
 }
